@@ -1,0 +1,30 @@
+apiVersion: apps/v1 # 配置文件格式的版本
+kind: Deployment # 创建的资源类型
+metadata: # 资源的元数据
+  name: go-web
+  labels:
+    app: go-web
+spec: # 规格说明
+  replicas: 2 # 定义pod数量
+  selector: # 通过label找到对应的pod
+    matchLabels:
+      app: go-web
+  template: # 定义pod的模板
+    metadata: # pod的元数据
+      labels: # 定义pod的标签
+        app: go-web
+    spec: # 描述pod的规格
+      containers:
+        - name: go-web
+          image: gfaia/go-web:v0.1.1
+          command: [ "/bin/bash", "-ce"] # 容器内的执行命令
+          args: ["./main"]
+          ports:
+            - containerPort: 8080 # 这里containerPort是容器内部的port
+          resources: # 限制容器的资源
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
