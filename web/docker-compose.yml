@@ -1,0 +1,6 @@
+version: "2"
+services:
+  app:
+    image: gfaia/go-web:v0.1.1
+    ports:
+      - "8888:8080"
