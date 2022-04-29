@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package grpc.testing;
+
+option go_package = "jaeger/api/grpc_testing";
+
+message SimpleRequest {
+  string payload = 1;
+}
+
+message SimpleResponse {
+  string payload = 1;
+}
+
+service TestService {
+  rpc UnaryCall(SimpleRequest) returns (SimpleResponse);
+
+  rpc StreamingOutputCall(SimpleRequest) returns (stream SimpleResponse);
+
+  rpc StreamingInputCall(stream SimpleRequest) returns (SimpleResponse);
+
+  rpc StreamingBidirectionalCall(stream SimpleRequest) returns (stream SimpleResponse);
+}
