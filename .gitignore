@@ -1,1 +1,4 @@
 vendor
+
+redis/redis-stable
+redis/*.rdb
