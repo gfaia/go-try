@@ -13,7 +13,7 @@ func main() {
 	topic := flag.String("topic", "topic", "topic")
 	flag.Parse()
 
-	p, err := kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": brokers})
+	p, err := kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": *brokers})
 	if err != nil {
 		panic(err)
 	}
