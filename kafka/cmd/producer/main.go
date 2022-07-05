@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 
 	"github.com/confluentinc/confluent-kafka-go/kafka"
@@ -8,7 +9,11 @@ import (
 
 func main() {
 
-	p, err := kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": "localhost"})
+	brokers := flag.String("bootstrap.servers", "localhost:9092", "broker addresses")
+	topic := flag.String("topic", "topic", "topic")
+	flag.Parse()
+
+	p, err := kafka.NewProducer(&kafka.ConfigMap{"bootstrap.servers": brokers})
 	if err != nil {
 		panic(err)
 	}
@@ -30,10 +35,9 @@ func main() {
 	}()
 
 	// Produce messages to topic (asynchronously)
-	topic := "myTopic"
 	for _, word := range []string{"Welcome", "to", "the", "Confluent", "Kafka", "Golang", "client"} {
 		p.Produce(&kafka.Message{
-			TopicPartition: kafka.TopicPartition{Topic: &topic, Partition: kafka.PartitionAny},
+			TopicPartition: kafka.TopicPartition{Topic: topic, Partition: kafka.PartitionAny},
 			Value:          []byte(word),
 		}, nil)
 	}
