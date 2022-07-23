@@ -9,13 +9,13 @@ import (
 
 func main() {
 	brokers := flag.String("bootstrap.servers", "localhost:9092", "broker addresses")
-	consumerGroup := flag.String("group.id", "test", "consumer group")
+	group := flag.String("group.id", "test", "consumer group")
 	topic := flag.String("topic", "topic", "topic")
 	flag.Parse()
 
 	c, err := kafka.NewConsumer(&kafka.ConfigMap{
 		"bootstrap.servers": *brokers,
-		"group.id":          *consumerGroup,
+		"group.id":          *group,
 		"auto.offset.reset": "earliest",
 	})
 
