@@ -4,4 +4,4 @@ tidy:
 
 .PHONY: install
 install:
-	@bash ./run.sh
+	@bash ./install.sh

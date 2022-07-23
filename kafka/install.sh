@@ -7,3 +7,4 @@ curl -o ${KAFKA_VERSION}.tgz https://dlcdn.apache.org/kafka/3.2.0/${KAFKA_VERSIO
 tar -xzf ${KAFKA_VERSION}.tgz
 mv ${KAFKA_VERSION} kafka
 
+rm ${KAFKA_VERSION}.tgz

@@ -6,3 +6,6 @@ redis/*.rdb
 .vscode/
 
 .DS_Store
+
+kafka/kafka/
+kafka/*.tgz

@@ -8,7 +8,6 @@ import (
 )
 
 func main() {
-
 	brokers := flag.String("bootstrap.servers", "localhost:9092", "broker addresses")
 	topic := flag.String("topic", "topic", "topic")
 	flag.Parse()
