@@ -9,3 +9,5 @@ redis/*.rdb
 
 kafka/kafka/
 kafka/*.tgz
+
+hdfs/hadoop
