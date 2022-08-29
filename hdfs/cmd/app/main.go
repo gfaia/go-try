@@ -85,7 +85,7 @@ func (m *Manager) getClient(namenode string) (*hdfs.Client, error) {
 
 func main() {
 	manager := NewManager()
-	cli, err := manager.getClient("localhost:9000")
+	cli, err := manager.getClient("namenode:9000")
 	if err != nil {
 		log.Fatal(err)
 	}
